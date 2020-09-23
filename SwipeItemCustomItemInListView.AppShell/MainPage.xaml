@@ -3,9 +3,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:system="using:System"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-
+        <ListView ItemsSource="{x:Bind _list}" SelectionMode="None" IsItemClickEnabled="True">
+            <ListView.Resources>
+                <BitmapIconSource x:Key="BitmapIcon" UriSource="/Assets/Phone.png"/>
+                <SymbolIconSource x:Key="SymbolIcon" Symbol="AttachCamera" />
+                <SwipeItems x:Key="SwipeItems" Mode="Reveal">
+                    <SwipeItem Background="Red" BehaviorOnInvoked="Close"
+                               Text="BitmapIcon"
+                               IconSource="{StaticResource BitmapIcon}"
+                               Foreground="White"/>
+                    <SwipeItem Background="Red" BehaviorOnInvoked="Close"
+                               Text="SymbolIcon"
+                               IconSource="{StaticResource SymbolIcon}"
+                               Foreground="White"/>
+                </SwipeItems>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="system:String">
+                    <SwipeControl LeftItems="{StaticResource SwipeItems}" Padding="8,0">
+                        <TextBlock Text="{x:Bind}" VerticalAlignment="Center"/>
+                    </SwipeControl>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
