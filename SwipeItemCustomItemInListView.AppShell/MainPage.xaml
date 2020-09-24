@@ -9,7 +9,7 @@
     <Grid>
         <ListView ItemsSource="{x:Bind _list}" SelectionMode="None" IsItemClickEnabled="True">
             <ListView.Resources>
-                <BitmapIconSource x:Key="BitmapIcon" UriSource="/Assets/Phone.png"/>
+                <BitmapIconSource x:Key="BitmapIcon" UriSource="/Assets/Phone.png" ShowAsMonochrome="False"/>
                 <SymbolIconSource x:Key="SymbolIcon" Symbol="AttachCamera" />
                 <SwipeItems x:Key="SwipeItems" Mode="Reveal">
                     <SwipeItem Background="Red" BehaviorOnInvoked="Close"
